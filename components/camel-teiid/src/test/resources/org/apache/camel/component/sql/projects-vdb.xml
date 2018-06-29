@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<vdb name="Projects" version="1">
+
+    <description>The Projects Dynamic VDB</description>
+
+    <model name="Projects">
+        <property name="importer.useFullSchemaName" value="false"/>
+           
+        <source name="derby-connector" translator-name="derby" connection-jndi-name="java:/projects-ds"/>
+    </model>
+    
+    
+    <!--  <model name="Stocks" type="VIRTUAL">
+        <metadata type="DDL"><![CDATA[
+                
+        CREATE VIEW StockPrices (
+            symbol string,
+            price bigdecimal
+            )
+            AS  
+               SELECT SP.symbol, SP.price
+                FROM (EXEC MarketData.getTextFiles('*.txt')) AS f, 
+                    TEXTTABLE(f.file COLUMNS symbol string, price bigdecimal HEADER) AS SP;
+        
+        
+        CREATE VIEW Stock (
+            product_id integer,
+            symbol string,
+            price bigdecimal,
+            company_name   varchar(256)
+            )
+            AS
+                SELECT  A.ID, S.symbol, S.price, A.COMPANY_NAME
+                    FROM StockPrices AS S, Accounts.PRODUCT AS A
+                    WHERE S.symbol = A.SYMBOL;
+                 
+        ]]> </metadata>
+    </model>//-->
+
+
+
+</vdb>
